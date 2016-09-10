@@ -43,17 +43,29 @@ public class SantaInAnElevator {
     private final Logger logger = Logger.getLogger(this.getClass());
 
     public String readFileIntoString(String path) {
-        String map = "";
+        String parens = "";
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-            map = reader.readLine();
+            parens = reader.readLine();
         } catch (FileNotFoundException ex) {
             logger.error("File not found");
-            logger.error(ex.getStackTrace());
+            logger.error(ex.getStackTrace().toString());
         } catch (IOException ex) {
             logger.error("Error opening file");
-            logger.error(ex.getStackTrace());
+            logger.error(ex.getStackTrace().toString());
         }
-        return map;
+        return parens;
+    }
+
+    public Integer findFloor(String parens) {
+        Integer floor = 0;
+        for (int i = 0; i<parens.length(); i++) {
+            if (parens.charAt(i) == '(') {
+                floor++;
+            } else {
+                floor--;
+            }
+        }
+        return floor;
     }
 
 }

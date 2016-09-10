@@ -1,6 +1,9 @@
 package edu.madisoncollege.entjava;
 
 
+import org.apache.log4j.Logger;
+import java.io.*;
+
 /**
  * Created by paulawaite on 9/7/16.
  *
@@ -37,5 +40,20 @@ package edu.madisoncollege.entjava;
 
 public class SantaInAnElevator {
 
+    private final Logger logger = Logger.getLogger(this.getClass());
+
+    public String readFileIntoString() {
+        String map = "";
+        try (BufferedReader reader = new BufferedReader(new FileReader("resources/SantaUpDown.txt"))) {
+            map = reader.readLine();
+        } catch (FileNotFoundException ex) {
+            logger.error("File not found");
+            logger.error(ex.getStackTrace());
+        } catch (IOException ex) {
+            logger.error("Error opening file");
+            logger.error(ex.getStackTrace());
+        }
+        return map;
+    }
 
 }

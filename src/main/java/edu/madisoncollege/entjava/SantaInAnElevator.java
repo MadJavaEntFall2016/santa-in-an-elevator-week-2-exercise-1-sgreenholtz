@@ -42,9 +42,9 @@ public class SantaInAnElevator {
 
     private final Logger logger = Logger.getLogger(this.getClass());
 
-    public String readFileIntoString() {
+    public String readFileIntoString(String path) {
         String map = "";
-        try (BufferedReader reader = new BufferedReader(new FileReader("resources/SantaUpDown.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             map = reader.readLine();
         } catch (FileNotFoundException ex) {
             logger.error("File not found");

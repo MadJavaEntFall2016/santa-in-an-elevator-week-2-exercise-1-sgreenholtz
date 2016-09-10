@@ -2,6 +2,8 @@ package edu.madisoncollege.entjava;
 
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -10,9 +12,10 @@ import static org.junit.Assert.*;
  */
 public class SantaInAnElevatorTest {
 
-    @Test
+    @Test(expected = FileNotFoundException.class)
     public void readFileIntoString() throws Exception {
-
+        SantaInAnElevator main = new SantaInAnElevator();
+        main.readFileIntoString("resources/test.txt");
     }
 
 }
